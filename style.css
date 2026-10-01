@@ -1,0 +1,412 @@
+:root {
+  --accent: #c9a876;
+  --accent-hover: #ddbd8e;
+}
+
+
+body{
+  font-family: 'Poppins', sans-serif;
+  background-color: #0a0a0a;
+  color: #847771;
+}
+
+/* ============================
+   NAVBAR
+   Sticky at top, blurred background so
+   it stays readable over scrolled content
+   ============================ */
+.navbar {
+  position: fixed;        /* stays pinned to top while scrolling */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;            /* sits above everything else */
+  background: rgba(10, 10, 10, 0.75);  /* semi-transparent black */
+  backdrop-filter: blur(8px);          /* blur effect behind navbar */
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.nav-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo/initials on the left */
+.nav-logo {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--accent);   /* gold, matches site accent */
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+/* Nav links on the right */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 32px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: #b5b5b5;         /* soft gray, same as body text tone */
+  text-decoration: none;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+/* Gold underline that grows in on hover */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #ffffff;
+}
+
+.nav-links a:hover::after {
+  width: 100%;            /* underline expands fully on hover */
+}
+
+/* ============================
+   PAGE OFFSET
+   Since navbar is "fixed", it floats over content.
+   Push the hero section down so it doesn't start
+   hidden behind the navbar.
+   ============================ */
+body {
+  padding-top: 70px;      /* roughly navbar's height */
+}
+
+/* ============================
+   SMOOTH SCROLL
+   Makes anchor-link jumps (#about, #projects, #contact)
+   scroll smoothly instead of snapping instantly
+   ============================ */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ============================
+   RESPONSIVE
+   Stack nav links on smaller screens
+   ============================ */
+@media (max-width: 600px) {
+  .nav-container {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .nav-links {
+    gap: 20px;
+  }
+}
+
+.fullname{
+  text-align: center;
+  font-style: normal;
+  font-size: 30px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  color: #9d9685;
+}
+
+.profession{
+  text-align: center;
+  font-style: normal;
+  font-size: 60px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding-top: 10px;
+  color: white;
+}
+
+
+.profile{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding-top: 55px;
+}
+
+.profile img{
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 20px;
+  border: 2px solid #b8b8b8;
+
+}
+
+.simple-description{
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  font-style: italic;
+  font-size: 12px;
+  color:  #b5b5b5;
+}
+
+
+
+.hero-buttons {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1.5px solid var(--accent);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* Primary: solid fill, main action */
+.btn-primary {
+  background: var(--accent);
+  color: #0a0a0a;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+}
+
+/* Secondary: outline only, lower emphasis */
+.btn-secondary {
+  background: transparent;
+  color: var(--accent);
+}
+
+.btn-secondary:hover {
+  background: rgba(201, 168, 118, 0.1);
+}
+
+/* ============================
+   PROJECTS SECTION
+   ============================ */
+
+#projects {
+  padding: 80px 20px;        /* breathing room above/below the section */
+  text-align: center;
+  background: #0a0a0a;       /* match hero's black background */
+}
+
+/* Section title ("My Projects") */
+.project-header {
+  font-size: 28px;
+  font-weight: 600;
+  color: #ffffff;            /* white, same weight as "Web Developer" headline */
+  margin-bottom: 48px;
+}
+
+/* ============================
+   PROJECT GRID
+   Renamed from .container to avoid clashing
+   with the page's global max-width wrapper
+   ============================ */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);  /* 3 equal columns on desktop */
+  gap: 24px;
+  max-width: 960px;
+  margin: 0 auto;             /* center the grid on the page */
+}
+
+/* ============================
+   PROJECT CARD
+   ============================ */
+.card {
+  background: #141414;              /* slightly lighter than page bg, gives depth */
+  border: 1px solid #2a2a2a;        /* subtle outline so cards read distinctly on black */
+  border-radius: 10px;
+  padding: 24px 20px;
+  text-align: left;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+/* Gentle lift + gold border on hover, ties back to accent color */
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent); /* gold, defined earlier in :root */
+}
+
+/* Project title inside each card */
+.card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+/* Short project description */
+.card p {
+  font-size: 14px;
+  color: #b5b5b5;           /* soft gray, matches tagline fix from hero */
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+
+/* "View project" link inside each card */
+.card a {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);     /* gold, consistent with buttons */
+  text-decoration: none;
+}
+
+.card a:hover {
+  text-decoration: underline;
+}
+
+/* ============================
+   RESPONSIVE
+   Stack cards on smaller screens
+   ============================ */
+@media (max-width: 768px) {
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
+  }
+}
+
+@media (max-width: 480px) {
+  .project-grid {
+    grid-template-columns: 1fr;            /* 1 column on mobile */
+  }
+}
+
+
+/* ============================
+   SHARED SECTION HEADER
+   Reusable for About + Contact
+   ============================ */
+.section-header {
+  font-size: 28px;
+  font-weight: 600;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* ============================
+   ABOUT ME SECTION
+   ============================ */
+#about {
+  padding: 80px 20px;
+  background: #0a0a0a;
+}
+
+.about-content {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Circular photo, same treatment as hero image */
+.about-photo img {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #ffffff; /* thin ring, matches hero photo style */
+}
+
+.about-text {
+  flex: 1; /* text takes remaining space next to photo */
+}
+
+.about-text p {
+  font-size: 15px;
+  color: #b5b5b5;      /* soft gray, consistent with rest of site */
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+/* Quick-fact list (Location / Education / Focus) */
+.about-facts {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.about-facts li {
+  font-size: 14px;
+  color: #b5b5b5;
+  margin-bottom: 8px;
+}
+
+.about-facts strong {
+  color: var(--accent); /* gold label, matches site accent */
+  font-weight: 600;
+}
+
+/* Stack photo above text on smaller screens */
+@media (max-width: 600px) {
+  .about-content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* ============================
+   CONTACT SECTION
+   ============================ */
+#contact {
+  padding: 80px 20px;
+  background: #0a0a0a;
+  text-align: center;
+}
+
+.contact-subtext {
+  font-size: 15px;
+  color: #b5b5b5;
+  margin-bottom: 32px;
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.contact-item {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--accent);   /* gold, consistent with buttons/links elsewhere */
+  text-decoration: none;
+  border: 1px solid var(--accent);
+  padding: 10px 24px;
+  border-radius: 6px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.contact-item:hover {
+  background: var(--accent);
+  color: #0a0a0a;   /* flips to dark text on gold background */
+}
+
